@@ -1,1 +1,0 @@
-# 이분 탐색 응용 - 파라메트릭 서치 (Parametric Search)
