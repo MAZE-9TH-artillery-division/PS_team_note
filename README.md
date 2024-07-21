@@ -12,7 +12,6 @@ ps 팀 노트
 
 ---
 
-- ? 알고리즘(정리해줘 응애)
 - 기초 알고리즘 (폭넓게 쓰이는 알고리즘)
     
     [유니온-파인드 (Union - Find) ](Algorithm/Fundamental/Union-Find.md)
