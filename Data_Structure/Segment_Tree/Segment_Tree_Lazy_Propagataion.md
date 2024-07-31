@@ -5,10 +5,12 @@
   [17353번: 하늘에서 떨어지는 1, 2, ..., R-L+1개의 별](https://www.acmicpc.net/problem/17353) (**플레 2**) 
 
 
-* 아직 Segment Tree가 뭔지 모른다면 아래의 문서를 먼저 보고 올 것!
-
-[Segment Tree 기본편](https://github.com/MAZE-9TH-artillery-division/PS_team_note/blob/main/Data_Structure/Segment_Tree/Segment_Tree.md)
-
+* 아직 Segment Tree가 뭔지 모른다면 [이 문서](https://github.com/MAZE-9TH-artillery-division/PS_team_note/blob/main/Data_Structure/Segment_Tree/Segment_Tree.md)
+를 먼저 보고 올 것! 
+<br/>
+<br/>
+<br/>
+<br/>
 
 ** 언제 사용할 수 있는 자료 구조인가? 
 
@@ -18,7 +20,8 @@
 
  배열의 값을 원하는 것으로 업데이트하는 건 "한 점에 대해서만" 해줄 수 있어. 
 
- 
+ <br/><br/><br/>
+
  이제 Segment Tree에서 업데이트를 구간에 대해서 한다고 생각해보자. 
 
  (이때, 업데이트는 구간 전체에 "똑같이" 해준다고 생각하자. 예를 들면 1번째 값부터 7번째 값에 똑같이 숫자 3을 더해주는 거지)
@@ -30,6 +33,7 @@
  이러면 시간복잡도는 원래 배열의 전체 길이가 N, 구간의 길이를 L이라 했을 때 L * O(log N) = O(L log N). 
 
  그런데 구간의 길이는 최대 N이니까 결과적으로는 O(N log N)이 되어버려. 
+<br/><br/><br/>
 
 
  Q. 엥 충분히 괜찮은 시간 복잡도 아닌가? 
@@ -40,6 +44,7 @@
 
   --> 이런 상황에서 여전히 업데이트를 O(log N)의 시간 복잡도로 처리하고 싶다는 것이 우리의 소망이고, 실제로 Lazy Propagation이라는 방법을 통해 이를 구현할 수 있어. 
 
+<br/><br/><br/>
 
 
 *** 그래서 구현은 어떻게 하는가? (이론편) 
@@ -52,6 +57,7 @@
 
  이 아이디어가 Lazy propagation의 기반이야. 조금 더 구체적으로 정리해보면, Lazy propagation의 과정은 아래와 같아. 
 
+<br/><br/>
 
  1. 기본편에서 구현했던 쿼리 함수처럼, 우선은 "업데이트해야 하는 구간에 포함되면서 최대한 긴 구간을 나타내는 부모 노드들"을 찾아. 
  
@@ -59,24 +65,28 @@
 
  3. 그리고 앞으로 업데이트나 쿼리 처리를 할 때 마다 내가 접근한 노드에 Lazy 값이 존재하면, 그 Lazy 값을 자식 노드에게 전파 (Propagation)시켜주면 돼.
 
- 
+ <br/>
  극단적으로 요약하면 업데이트를 일단 미뤄놓고, 정말 해야 될 때가 오면 그제서야 해준다는 거지. 
 
- 
+ <br/><br/><br/>
  *** 주의점 : 위 구현의 단점 
 
  기본편에서 잠깐 언급했지만, Segment Tree의 구현 방식에는 크게 Top-down과 Bottom-up이 있어. 개인적으로는 가장 기본적인 Segment Tree를 구현할 때는 Bottom-up 구현이 직관적이라고 생각하고, 그래서 기본편에서도 Bottom-up 구현을 소개했는데... 
+<br/><br/>
 
  아쉽게도 Lazy propagation은 오히려 Top-down 방식이 더 직관적이라는 단점이 있어... (물론 이또한 개인적인 의견) 
+<br/><br/>
 
  Q. ?? 갑자기 왜 Top-down이 더 직관적임..? 
 
  A. 그... Lazy 값을 자식 node에게 전달하는 과정이 이루어지려면 부모 노드를 먼저 방문해야 하는데... (기본편에서 봤듯이) Bottom-up 방식은 자식 노드를 먼저 방문하기 때문에 위의 과정을 단순하게 Bottom-up 방식으로 구현하면 수많은 반례가 생겨. 
 
+<br/><br/>
  Q. 그러면 Bottom-up은 Lazy propagation을 못 쓰나..? 
 
  A. ㄴㄴ. 다행히 가능함. 다만...이를 잘 정리해놓은 한글 자료가 별로 없어서 개인적으로 + 커뮤니티의 영어 자료 도움을 받는 중. 나중에 정리해볼게. (이미 업데이트 부분까지는 구현이 됐어!) 
 
+<br/><br/>
 
  ** 그래서 구현은 어떻게 함? (코드편) 
 
