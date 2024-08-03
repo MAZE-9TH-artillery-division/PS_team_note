@@ -13,9 +13,9 @@
 
 우선 백준 19623번 "회의실 배정 4" 문제를 살펴보면서 어떻게 풀 수 있을지 생각해보자. 
 
-![오류 발생](../Algorithm/Images/19623.JPG)
+![오류 발생](/Algorithm/Images/19623.JPG)
 
-![오류 발생](../Algorithm/Images/19623_2.JPG) 
+![오류 발생](/Algorithm/Images/19623_2.JPG) 
 
 
 이 문제를 푸는 Naive한 방법 중 하나는, dp 배열을 선언한 뒤에 아래의 반복문을 통해 정답을 출력하는 거야. 
